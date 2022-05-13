@@ -1,1 +1,72 @@
+Introduction:
+
+This  car data set taken from Kaggle.To give a piece of brief information about the data set this data contains more of 10,000 rows and more than 10 columns 
+which contains features of the car such as Engine Fuel Type, Engine Size, HP, Transmission Type, highway MPG, city MPG and many more. 
+
+--To know more about the data and finding useful information about the data we do perform some python tools on the data.
+
+#IMPORTING ALL NECCESSRY LIBRARIES.
+
+import pandas as pd
+import numpy as np
+import seaborn as sns #visualisation
+import matplotlib.pyplot as plt #visualisation
+%matplotlib inline 
+sns.set(color_codes=True)
+
+
+# IMPORT THE DATA INTO DATA FRAME
+Loading the data into the pandas data frame is certainly one of the most important steps in EDA, as we can see that the value from the data set is comma-separated. 
+So all we have to do is to just read the CSV into a data frame and pandas data frame does the job for us.
+
+data=pd.read_csv("E:\\CDAC\\data\\data.csv")                    #To import file
+
+data.head(5)                                                   # To display first 5 rows 
+
+OUTPUT:
+
+Make	Model	Year	Engine Fuel Type	Engine HP	Engine Cylinders	Transmission Type	Driven_Wheels	Number of Doors	Market Category	                      Vehicle Size	Vehicle Style	highway MPG	city mpg	Popularity	MSRP
+0	BMW	1 Series M	2011	premium unleaded (required)	335.0	6.0	       MANUAL	    rear wheel drive	2.0	            Factory Tuner,Luxury,High-Performance	Compact	        Coupe	      26	          19	        3916	46135
+1	BMW	1 Series	2011	premium unleaded (required)	300.0	6.0     	  MANUAL	    rear wheel drive	2.0	              Luxury,Performance	                Compact	      Convertible 	28	          19	        3916	40650
+2	BMW	1 Series	2011	premium unleaded (required)	300.0	6.0        	MANUAL	    rear wheel drive	2.0	              Luxury,High-Performance	            Compact	        Coupe        28	           20       	3916	36350
+3	BMW	1 Series	2011	premium unleaded (required)	230.0	6.0	        MANUAL	    rear wheel drive	2.0	              Luxury,Performance	                  Compact	      Coupe	        28	          18	       3916	29450
+4	BMW	1 Series	2011	premium unleaded (required)	230.0	6.0	        MANUAL	      rear wheel drive	2.0	             Luxury                             	Compact	        Convertible	  28	         18	      3916	34500
+
+
+data.tail(5)              # to display last 5 rows
+
+
+OUTPUT:
+Make	Model	Year	Engine Fuel Type	Engine HP	Engine Cylinders	Transmission Type	Driven_Wheels	Number of Doors	Market Category	Vehicle Size	Vehicle Style	highway MPG	city mpg	Popularity	MSRP
+11909	Acura	ZDX	2012	premium unleaded (required)	300.0	6.0	AUTOMATIC	all wheel drive	4.0	Crossover,Hatchback,Luxury	Midsize	4dr Hatchback	23	16	204	46120
+11910	Acura	ZDX	2012	premium unleaded (required)	300.0	6.0	AUTOMATIC	all wheel drive	4.0	Crossover,Hatchback,Luxury	Midsize	4dr Hatchback	23	16	204	56670
+11911	Acura	ZDX	2012	premium unleaded (required)	300.0	6.0	AUTOMATIC	all wheel drive	4.0	Crossover,Hatchback,Luxury	Midsize	4dr Hatchback	23	16	204	50620
+11912	Acura	ZDX	2013	premium unleaded (recommended)	300.0	6.0	AUTOMATIC	all wheel drive	4.0	Crossover,Hatchback,Luxury	Midsize	4dr Hatchback	23	16	204	50920
+11913	Lincoln	Zephyr	2006	regular unleaded	221.0	6.0	AUTOMATIC	front wheel drive	4.0	Luxury	Midsize	Sedan	26	17	61	28995
+
+data.dtypes                          # to display data type of columns
+
+OUTPUT:
+Make                  object
+Model                 object
+Year                   int64
+Engine Fuel Type      object
+Engine HP            float64
+Engine Cylinders     float64
+Transmission Type     object
+Driven_Wheels         object
+Number of Doors      float64
+Market Category       object
+Vehicle Size          object
+Vehicle Style         object
+highway MPG            int64
+city mpg               int64
+Popularity             int64
+MSRP                   int64
+dtype: object
+
+
+#dropping irrelavent columns
+data = data.drop(['Engine Fuel Type','Market Category','Vehicle Style','Popularity','Number of Doors','Vehicle Size'],axis=1)
+
 
